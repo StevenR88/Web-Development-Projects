@@ -1,6 +1,4 @@
-Project Title: Pixel Wars
-
-Team Number: 4O
+# Pixel Wars
 
 ### Team Members
 
@@ -11,8 +9,6 @@ Steven Reid: Back-end and time management
 Isaac Ng: Front-end, Back-end and prototyping
 
 Stirling Anderson: Database/API
-
-Sponsor: Group G2
 
 ### Project Description
 Online 2D territorial pixel game based on the Reddit experiment /r/place.
