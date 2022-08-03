@@ -1,14 +1,10 @@
 # Pixel Wars
 
 ### Team Members
-
-Dan Yoo: Front-end Javascript
-
-Steven Reid: Back-end and time management
-
-Isaac Ng: Front-end, Back-end and prototyping
-
-Stirling Anderson: Database/API
+Dan Yoo
+Steven Reid
+Isaac Ng
+Stirling Anderson
 
 ### Project Description
 Online 2D territorial pixel game based on the Reddit experiment /r/place.
