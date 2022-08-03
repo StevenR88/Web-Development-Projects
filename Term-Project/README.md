@@ -1,10 +1,5 @@
 # Pixel Wars
-
-### Team Members
-- Dan Yoo
-- Steven Reid
-- Isaac Ng
-- Stirling Anderson
+This project was performed as a term project for my Internet Software Architecture course at BCIT. I worked as a member of a team of four.
 
 ### Project Description
 Online 2D territorial pixel game based on the Reddit experiment /r/place.
@@ -20,3 +15,7 @@ encourage you to be strategic in your moves instead of spamming one button as fa
 as you can.
 When one color manages to conquer an entire map, the score will be updated and
 the map will revert back to the default map.
+
+### Concept
+This project was performed with a focus on using JavaScript, HTML, CSS, node.js and MySQL to create a client/server experience that utilizes
+RESTful API concepts.
