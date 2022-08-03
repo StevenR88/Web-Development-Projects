@@ -2,7 +2,7 @@ Project Title: Pixel Wars
 
 Team Number: 4O
 
-Team Members
+### Team Members
 
 Dan Yoo: Front-end Javascript
 
