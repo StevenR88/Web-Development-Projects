@@ -1,5 +1,7 @@
 # Pixel Wars
-This project was performed as a term project for my Internet Software Architecture course at BCIT. I worked as a member of a team of four.
+This project was performed as a term project for my Internet Software Architecture course at BCIT.
+
+I worked as a member of a team of four.
 
 ### Project Description
 Online 2D territorial pixel game based on the Reddit experiment /r/place.
