@@ -10,7 +10,7 @@ Stirling Anderson: Database/API
 
 Sponsor: Group G2
 
-## Project Description
+### Project Description
 Online 2D territorial pixel game based on the Reddit experiment /r/place.
 There is a 2D map with N x M grid with each quadrant filled with one of four colors.
 Everytime a new player joins the game, they will be prompted to join one of the four
