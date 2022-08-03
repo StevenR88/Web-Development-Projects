@@ -1,0 +1,165 @@
+// server.post('/createUser', async (req, res) => {
+//     stats.addStats("POST", "/createUser");
+
+//     let validInputs = validateUserPassInput(req.body.user, req.body.pass);
+
+//     if(validInputs.valid === false) {
+//         res.status(400);
+//         res.send(validInputs.msg);
+//     }
+
+//     console.log(`attempting to create new user with credentials user: ${req.body.user} pass: ${req.body.pass}`);
+//     let newUser = await addUser(req.body.user, req.body.pass)
+
+//     if(!newUser) {
+//         res.status(400);
+//         res.send({msg: "user could not be added."});
+//     } else {
+//         res.send({msg: "user created"});
+//     }
+// });
+
+// server.put('/updateMap', function (req, res) {
+//     stats.addStats("PUT", "/updateMap");
+//     map[req.body.x][req.body.y] = req.body.color;
+//     res.send(JSON.stringify(map));
+// });
+server.post('/mapAuthenticated', function (req, res) {
+    stats.addStats("POST", "/mapAuthenticated")
+    res.send(map);
+});
+
+server.post('/updateColor', async (req, res) => {
+    stats.addStats("POST", "/admin");
+});
+
+server.post('/getColor', async (req, res) => {
+    stats.addStats("POST", "/admin");
+});
+
+// server.post('/generateApiKey', async function (req, res) {
+//     stats.addStats("POST", "/generateApiKey");
+
+//     let validInputs = validateUserPassInput(req.body.user, req.body.pass);
+
+//     if(validInputs.valid === false) {
+//         res.status(400);
+//         res.send(validInputs.msg);
+//     }
+
+//     console.log(`connection with user: ${req.body.user} pass: ${req.body.pass}`);
+//     let validUser = await authenticate(req.body.user, req.body.pass, false)
+
+//     if(!validUser) {
+//         res.status(400);
+//         res.send({msg: "invalid user."});
+//     } else {
+//         let apiKey = await generateApiKey(req.body.user);
+//         res.send(apiKey);
+//     }
+// });
+// server.post('/updateValidPlayerMove', async function (req, res) {
+   
+//     // let validInputs = validateUserPassInput(req.body.user, req.body.pass);
+//     // col=25&row=11
+//     let row = req.body.row;
+//     let col = req.body.col;
+
+
+//     // results = await sqlAsyncQueryWrapper('INSERT INTO userlist (username, pwd_hash, admin_account) values (?, ?, ?)', [username, hash, admin_flag]);
+
+//     // if(validInputs.valid = false) {
+//     //     res.status(400);
+//     //     res.send(validInputs.msg);
+//     // }
+
+//     // console.log(`connection with user: ${req.body.user} pass: ${req.body.pass}`);
+//     // let validUser = await authenticate(req.body.user, req.body.pass, false)
+
+//     // if(!validUser) {
+//     //     res.status(400);
+//     //     res.send({msg: "invalid user."});
+//     // } else {
+//     //     let apiKey = await generateApiKey(req.body.user);
+//     //     res.send(apiKey);
+//     // }
+// })
+
+
+// // server.post('/playerMove', async function (req, res) {
+// //     stats.addStats("POST", "/playerMove");
+// //     res.set({ 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "*" });
+
+// //     let valid_key = authenticate_api_key(req.body.api_key);
+
+// //     if(!valid_key || valid_key === undefined) {
+// //         res.status(400);
+// //         res.send({msg: "invalid user."});
+// //     }
+
+// //     // check the last time this key made a move, check sql database
+
+// //     // if move is too soon
+// //     let timeSinceLastMove = someFunction(timeFromSqlFromKey);
+
+// //     if(timeSinceLastMove < someAmount) {
+// //         res.status(400);
+// //         res.send({msg: `moving too fast, please wait ${someAmount - timeSinceLastMove}`});
+// //     }
+
+
+// //     let row = req.body.row;
+// //     let col = req.body.col;
+// //     let color = req.body.color;
+
+// //     //validate user inputs to ensure they are correct format
+// //     let is_valid_input = validatePlayerMoveInputs(row, col, color);
+// //     if(!is_valid_input) {
+// //         res.status(400);
+// //         res.send({msg: `invalid move inputs, check spelling`});
+// //     }
+
+// //     // get the map from SQL
+
+// //     let map_from_sql = await sqlAsyncQueryWrapper('SELECT 1 FROM map', null);
+
+
+// //     let is_valid_move = checkInputMove(map_from_sql, row, col, color);
+// //     if(!is_valid_move) {
+// //         res.status(400);
+// //         res.send({msg: `invalid move inputs, someone may have moved before you or it wasnt in the right place`});
+// //     }
+
+// //     // do player move
+
+// //     doPlayerMove(map_from_sql, row, col, color);
+
+// //     // write map back to database
+
+// //     let results = await sqlAsyncQueryWrapper('INSERT INTO map (map) values (?)', [map_from_sql]);
+// //     // TODO: check results for sql error
+
+
+// //     res.status(200);
+// //     res.send({msg: `move success!`, map: map_from_sql});
+// //     // might want to send the map back
+
+
+// //     // results = await sqlAsyncQueryWrapper('INSERT INTO userlist (username, pwd_hash, admin_account) values (?, ?, ?)', [username, hash, admin_flag]);
+
+// //     // if(validInputs.valid = false) {
+// //     //     res.status(400);
+// //     //     res.send(validInputs.msg);
+// //     // }
+
+// //     // console.log(`connection with user: ${req.body.user} pass: ${req.body.pass}`);
+// //     // let validUser = await authenticate(req.body.user, req.body.pass, false)
+
+// //     // if(!validUser) {
+// //     //     res.status(400);
+// //     //     res.send({msg: "invalid user."});
+// //     // } else {
+// //     //     let apiKey = await generateApiKey(req.body.user);
+// //     //     res.send(apiKey);
+// //     // }
+// // })

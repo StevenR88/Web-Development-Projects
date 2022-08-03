@@ -1,0 +1,174 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "This is the API documentation of COMP 4537 Team 4O's game.\n",
+    "version": "1.0.0",
+    "title": "Pixel Wars",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "description": "Pixel Wars Server",
+      "url": "https://game.stirlinganderson.dev"
+    }
+  ],
+  "tags": [
+    {
+      "name": "map",
+      "description": "Everything about the map"
+    },
+    {
+      "name": "admin",
+      "description": "Operations for the admin"
+    }
+  ],
+  "paths": {
+    "/map": {
+      "get": {
+        "tags": [
+          "map"
+        ],
+        "summary": "Gets map state",
+        "description": "Gets the current map state which returns as a 2d array.",
+        "responses": {
+          "200": {
+            "description": "successful get",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Map"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/admin": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "Sends a request to retrieve information about the server",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string"
+                  },
+                  "pass": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful login and retrieval of statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Admin"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid admin login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Map": {
+        "type": "object",
+        "properties": {
+          "map": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "r, g, b, y"
+              }
+            }
+          }
+        }
+      },
+      "Admin": {
+        "type": "object",
+        "properties": {
+          "GET": {
+            "type": "object",
+            "properties": {
+              "endpoint": {
+                "type": "integer"
+              }
+            }
+          },
+          "PUT": {
+            "type": "object",
+            "properties": {
+              "endpoint": {
+                "type": "integer"
+              }
+            }
+          },
+          "POST": {
+            "type": "object",
+            "properties": {
+              "endpoint": {
+                "type": "integer"
+              }
+            }
+          },
+          "DELETE": {
+            "type": "object",
+            "properties": {
+              "endpoint": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "AdminLogin": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "pass": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

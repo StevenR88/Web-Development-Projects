@@ -1,0 +1,402 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "This is the API documentation of COMP 4537 Team 4O's game.\n",
+    "version": "2.0.0",
+    "title": "Pixel Wars",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "description": "Pixel Wars Server",
+      "url": "https://game.stirlinganderson.dev"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Map",
+      "description": "Everything about the map"
+    },
+    {
+      "name": "Player",
+      "description": "Operations for the player"
+    },
+    {
+      "name": "Admin",
+      "description": "Operations for the admin"
+    },
+    {
+      "name": "Api",
+      "description": "Operations for the user api"
+    }
+  ],
+  "paths": {
+    "/Map": {
+      "get": {
+        "tags": [
+          "Map"
+        ],
+        "summary": "Gets map state",
+        "description": "Gets the current map state which returns as a 2d array.",
+        "responses": {
+          "200": {
+            "description": "successful get",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Map"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/resetMap": {
+      "delete": {
+        "tags": [
+          "Map"
+        ],
+        "summary": "When a game is finished, send a request to reset game state",
+        "description": "Delete stored game state in the database",
+        "responses": {
+          "200": {
+            "description": "successfully resetted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Map"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/playerMoveRequest": {
+      "put": {
+        "tags": [
+          "Map"
+        ],
+        "summary": "Sends this when player makes a move on the map",
+        "description": "When a player selects a square, it will send this request",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "apiKey": {
+                    "type": "string"
+                  },
+                  "row": {
+                    "type": "integer"
+                  },
+                  "col": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successfully captured tile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    },
+                    "map": {
+                      "$ref": "#/components/schemas/Map"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "failed at capturing tile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/score": {
+      "get": {
+        "tags": [
+          "Map"
+        ],
+        "summary": "Gets the scores of all colors",
+        "responses": {
+          "200": {
+            "description": "successfully retrieved scores",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    },
+                    "score": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Could not get score",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pickColor": {
+      "post": {
+        "tags": [
+          "Player"
+        ],
+        "summary": "Sends a request to set the players chosen color to the database",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "apiKey": {
+                    "type": "string"
+                  },
+                  "color": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successfully chose color",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "could not choose color",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Sends a request to retrieve information about the server",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminLogin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful login and retrieval of statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid admin login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/generateApiKeyAnon": {
+      "post": {
+        "tags": [
+          "Api"
+        ],
+        "summary": "Generates an API key for the player",
+        "description": "API token is used for validating their moves",
+        "responses": {
+          "200": {
+            "description": "successfully created an API key and stored it in the database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "apiKey": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Could not generate API key for player",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Map": {
+        "type": "object",
+        "properties": {
+          "map": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "r, g, b, y"
+              }
+            }
+          }
+        }
+      },
+      "AdminResponse": {
+        "type": "object",
+        "properties": {
+          "GET": {
+            "type": "object",
+            "properties": {
+              "endpoint": {
+                "type": "integer"
+              }
+            }
+          },
+          "PUT": {
+            "type": "object",
+            "properties": {
+              "endpoint": {
+                "type": "integer"
+              }
+            }
+          },
+          "POST": {
+            "type": "object",
+            "properties": {
+              "endpoint": {
+                "type": "integer"
+              }
+            }
+          },
+          "DELETE": {
+            "type": "object",
+            "properties": {
+              "endpoint": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "AdminLogin": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "pass": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

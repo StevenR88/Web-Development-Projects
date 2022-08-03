@@ -1,0 +1,69 @@
+html {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+}
+
+#redBoxHref {
+    background-color: red;
+    height: 250px;
+    width: 250px;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+
+#blueBoxHref {
+    background-color: blue;
+    height: 250px;
+    width: 250px;
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+}
+
+#yellowBoxHref {
+    background-color: yellow;
+    height: 250px;
+    width: 250px;
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+}
+
+#greenBoxHref {
+    background-color: green;
+    height: 250px;
+    width: 250px;
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

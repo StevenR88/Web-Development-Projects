@@ -1,0 +1,39 @@
+html {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-auto-flow: row;
+    grid-auto-flow: column;
+    height: 500px;
+    width: 500px;
+
+}
+
+
+.pixel {
+    border: 1px solid #000000;
+    height: 50px;
+    width: 50px;
+}
+
+#r {
+    background-color: red;
+}
+
+#b {
+    background-color: blue;
+}
+
+#g {
+    background-color: #23ed12;
+}
+
+#y {
+    background-color: yellow;
+}

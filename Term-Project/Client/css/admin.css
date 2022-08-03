@@ -1,0 +1,39 @@
+#title {
+    text-align: center;
+}
+
+#loginArea {
+    text-align: center;
+}
+
+#loginShow {
+    width: 10%;
+}
+
+#signup {
+    display: none;
+}
+
+#login {
+    display: none;
+}
+
+#endPointTable {
+    table-layout: fixed;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+td {
+    border: 1px solid;
+}
+
+th {
+    padding-left: 1.0em;
+    padding-right: 1.0em;
+}
+
+.container {
+    text-align: center;
+}
