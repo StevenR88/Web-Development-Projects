@@ -1,10 +1,10 @@
 # Pixel Wars
 
 ### Team Members
-Dan Yoo
-Steven Reid
-Isaac Ng
-Stirling Anderson
+- Dan Yoo
+- Steven Reid
+- Isaac Ng
+- Stirling Anderson
 
 ### Project Description
 Online 2D territorial pixel game based on the Reddit experiment /r/place.
