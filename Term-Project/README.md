@@ -21,3 +21,9 @@ the map will revert back to the default map.
 ### Concept
 This project was performed with a focus on using JavaScript, HTML, CSS, node.js and MySQL to create a client/server experience that utilizes
 RESTful API concepts.
+
+### Developers
+- Stirling Anderson
+- Dan Yoo
+- Isaac Ng
+- Steven Reid
